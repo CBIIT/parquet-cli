@@ -24,10 +24,13 @@ jobs:
           distribution: 'oracle'
           java-version: '21'
           
-      - name: Build
-        run: |
+      - run: |
           pushd parquet-cli
           sudo apt install -y thrift-compiler
           mvn clean package -DskipTests -Plocal 
-          java -jar target/parquet-cli-${{ inputs.version }}-runtime.jar
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: parquet-cli
+          path: parquet-cli/target/parquet-cli-*-runtime.jar
+      
