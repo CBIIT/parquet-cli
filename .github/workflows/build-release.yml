@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'The version of apache/parquet-java to use (eg: 1.14.4)'
+        description: 'apache/parquet-java version'
         default: '1.14.4'
         required: true
         type: string
@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
         with: 
           repository: apache/parquet-java
-          ref: parquet-${{ inputs.version }}
+          ref: apache-parquet-${{ inputs.version }}
           
       - uses: actions/setup-java@v4
         with:
